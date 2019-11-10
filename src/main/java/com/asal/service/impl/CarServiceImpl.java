@@ -1,12 +1,12 @@
-package com.asal.car.service.impl;
+package com.asal.service.impl;
 
-import com.asal.car.DAO.CarDAO;
-import com.asal.car.DTO.BasicItem;
-import com.asal.car.DTO.CarDetails;
-import com.asal.car.model.Car;
-import com.asal.car.model.Manufacturer;
-import com.asal.car.service.base.CarService;
-import com.asal.car.service.base.ManufacturerService;
+import com.asal.DAO.CarDAO;
+import com.asal.DTO.BasicItem;
+import com.asal.DTO.CarDetails;
+import com.asal.model.Car;
+import com.asal.model.Manufacturer;
+import com.asal.service.base.CarService;
+import com.asal.service.base.ManufacturerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

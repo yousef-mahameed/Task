@@ -1,6 +1,6 @@
-package com.asal.car.service.base;
+package com.asal.service.base;
 
-import com.asal.car.DTO.CarDetails;
+import com.asal.DTO.CarDetails;
 
 import java.util.List;
 

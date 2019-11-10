@@ -1,7 +1,7 @@
-package com.asal.car.controller;
+package com.asal.controller;
 
-import com.asal.car.customException.CarInUseException;
-import com.asal.car.service.base.CarService;
+import com.asal.customException.CarInUseException;
+import com.asal.service.base.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

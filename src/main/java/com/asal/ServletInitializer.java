@@ -1,4 +1,4 @@
-package com.asal.car;
+package com.asal;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

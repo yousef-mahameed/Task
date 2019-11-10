@@ -1,4 +1,4 @@
-package com.asal.car.DTO;
+package com.asal.DTO;
 
 public class BasicItem {
     private int id;

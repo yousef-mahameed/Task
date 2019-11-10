@@ -1,6 +1,6 @@
-package com.asal.car.DAO;
+package com.asal.DAO;
 
-import com.asal.car.model.Car;
+import com.asal.model.Car;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

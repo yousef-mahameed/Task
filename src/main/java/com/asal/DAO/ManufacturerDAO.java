@@ -1,6 +1,6 @@
-package com.asal.car.DAO;
+package com.asal.DAO;
 
-import com.asal.car.model.Manufacturer;
+import com.asal.model.Manufacturer;
 import org.springframework.data.repository.CrudRepository;
 
 public interface ManufacturerDAO extends CrudRepository<Manufacturer, Integer> {

@@ -1,4 +1,4 @@
-package com.asal.car.customException;
+package com.asal.customException;
 
 public class CarInUseException extends Exception {
 

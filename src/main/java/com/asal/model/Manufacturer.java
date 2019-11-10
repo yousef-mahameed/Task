@@ -1,4 +1,4 @@
-package com.asal.car.model;
+package com.asal.model;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;

@@ -1,4 +1,4 @@
-package com.asal.car.DTO;
+package com.asal.DTO;
 
 import java.time.ZonedDateTime;
 

@@ -1,6 +1,6 @@
-package com.asal.car.service.base;
+package com.asal.service.base;
 
-import com.asal.car.model.Manufacturer;
+import com.asal.model.Manufacturer;
 
 public interface ManufacturerService {
 

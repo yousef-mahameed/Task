@@ -1,4 +1,4 @@
-package com.asal.car.model;
+package com.asal.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
