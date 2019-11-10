@@ -1,9 +1,8 @@
 package com.asal.car.model;
 
-import org.hibernate.annotations.ColumnDefault;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.ZonedDateTime;
 
 @Entity
 @Table(name = "cars")
@@ -27,7 +26,7 @@ public class Car{
     private Integer seatCount;
 
     @Column(name = "convertible")
-    private Boolean convertible;
+    private Boolean isConvertible;
 
     @Column(name = "engine_type")
     private String engineType;
@@ -35,16 +34,25 @@ public class Car{
     @Column(name = "rating")
     private Double rating;
 
+    @Column(name = "selected")
+    private Boolean isSelected;
+
+    @Column(name = "created_on")
+    private ZonedDateTime createdOn;
+
     public Car() {
     }
 
-    public Car(String plateLicense, Manufacturer manufacturer, Integer seatCount, Boolean convertible, String engineType, Double rating) {
+    public Car(String plateLicense, Manufacturer manufacturer, Integer seatCount, Boolean isConvertible,
+               String engineType, Double rating, Boolean isSelected, ZonedDateTime createdOn) {
         this.plateLicense = plateLicense;
         this.manufacturer = manufacturer;
         this.seatCount = seatCount;
-        this.convertible = convertible;
+        this.isConvertible = isConvertible;
         this.engineType = engineType;
         this.rating = rating;
+        this.isSelected = isSelected;
+        this.createdOn = createdOn;
     }
 
     public Integer getId() {
@@ -79,12 +87,12 @@ public class Car{
         this.seatCount = seatCount;
     }
 
-    public Boolean getConvertible() {
-        return convertible;
+    public Boolean getIsConvertible() {
+        return isConvertible;
     }
 
-    public void setConvertible(Boolean convertible) {
-        this.convertible = convertible;
+    public void setIsConvertible(Boolean isConvertible) {
+        this.isConvertible = isConvertible;
     }
 
     public String getEngineType() {
@@ -101,5 +109,21 @@ public class Car{
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public Boolean getIsSelected() {
+        return isSelected;
+    }
+
+    public void setIsSelected(Boolean isSelected) {
+        this.isSelected = isSelected;
+    }
+
+    public ZonedDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(ZonedDateTime createdOn) {
+        this.createdOn = createdOn;
     }
 }

@@ -1,34 +1,33 @@
 package com.asal.car.DTO;
 
-public class CarDetails {
+import java.time.ZonedDateTime;
 
-    private int carId;
+public class CarDetails extends BasicItem{
+
     private String plateLicense;
     private int manufacturerId;
     private int seatCount;
     private boolean convertible;
     private String engineType;
     private double rating;
+    private boolean isSelected;
+    private ZonedDateTime createdOn;
 
     public CarDetails() {
     }
 
-    public CarDetails(int carId, String plateLicense, int manufacturerId, int seatCount, boolean convertible, String engineType, double rating) {
-        this.carId = carId;
+    public CarDetails(int carId, String plateLicense, int manufacturerId, int seatCount,
+                      boolean convertible, String engineType, double rating,
+                      boolean isSelected, ZonedDateTime createdOn) {
+        this.setId(carId);
         this.plateLicense = plateLicense;
         this.manufacturerId = manufacturerId;
         this.seatCount = seatCount;
         this.convertible = convertible;
         this.engineType = engineType;
         this.rating = rating;
-    }
-
-    public int getCarId() {
-        return carId;
-    }
-
-    public void setCarId(int carId) {
-        this.carId = carId;
+        this.isSelected = isSelected;
+        this.createdOn = createdOn;
     }
 
     public String getPlateLicense() {
@@ -77,5 +76,21 @@ public class CarDetails {
 
     public void setRating(double rating) {
         this.rating = rating;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    public ZonedDateTime getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(ZonedDateTime createdOn) {
+        this.createdOn = createdOn;
     }
 }
