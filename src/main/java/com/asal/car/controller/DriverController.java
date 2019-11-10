@@ -17,7 +17,17 @@ public class DriverController {
 
     @PostMapping(value = "/selectCar")
     public Integer selectCar(@RequestParam(name = "carId") Integer carId) throws CarInUseException {
-        return carService.selectCar(carId);
+        int status = carService.selectCar(carId);
+        if (status == -2) {
+            throw new CarInUseException(
+                    "Car already selected",
+                    "Car is currently used by other driver",
+                    "Try to select another car or wait for this to be not in use"
+            );
+        }
+        else {
+            return status;
+        }
     }
 
     @PostMapping(value = "/deselectCar")

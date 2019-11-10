@@ -121,6 +121,9 @@ public class CarServiceImpl implements CarService {
     private int setCarSelected(int carId, boolean selected) {
         try {
             Car car = carDAO.findCarById(carId);
+            if (car.getIsSelected() && selected) {
+                return -2;
+            }
             if (car != null) {
                 car.setIsSelected(selected);
                 carDAO.save(car);
