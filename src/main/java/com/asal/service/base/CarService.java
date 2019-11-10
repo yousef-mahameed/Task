@@ -1,6 +1,7 @@
 package com.asal.service.base;
 
 import com.asal.DTO.CarDetails;
+import com.asal.DTO.CarStatus;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface CarService {
 
     public int selectCar(Integer carId);
     public int deselectCar(Integer carId);
+
+    public int updateCarStatus(Integer carId, CarStatus carStatus);
 }

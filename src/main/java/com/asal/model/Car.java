@@ -1,5 +1,7 @@
 package com.asal.model;
 
+import com.asal.constants.Constants;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
@@ -40,11 +42,26 @@ public class Car{
     @Column(name = "created_on")
     private ZonedDateTime createdOn;
 
+    @Enumerated
+    @Column(name = "car_engine_status")
+    Constants.CarEngineStatus carEngineStatus;
+
+    @Enumerated
+    @Column(name = "transmission_system_health")
+    Constants.TransmissionSystemHealth transmissionSystemHealth;
+
+    @Enumerated
+    @Column(name = "fuel")
+    Constants.Fuel fuel;
+
     public Car() {
     }
 
-    public Car(String plateLicense, Manufacturer manufacturer, Integer seatCount, Boolean isConvertible,
-               String engineType, Double rating, Boolean isSelected, ZonedDateTime createdOn) {
+    public Car(@NotNull String plateLicense, @NotNull Manufacturer manufacturer, Integer seatCount,
+               Boolean isConvertible, String engineType, Double rating, Boolean isSelected,
+               ZonedDateTime createdOn, Constants.CarEngineStatus carEngineStatus,
+               Constants.TransmissionSystemHealth transmissionSystemHealth, Constants.Fuel fuel) {
+
         this.plateLicense = plateLicense;
         this.manufacturer = manufacturer;
         this.seatCount = seatCount;
@@ -53,6 +70,9 @@ public class Car{
         this.rating = rating;
         this.isSelected = isSelected;
         this.createdOn = createdOn;
+        this.carEngineStatus = carEngineStatus;
+        this.transmissionSystemHealth = transmissionSystemHealth;
+        this.fuel = fuel;
     }
 
     public Integer getId() {
@@ -125,5 +145,29 @@ public class Car{
 
     public void setCreatedOn(ZonedDateTime createdOn) {
         this.createdOn = createdOn;
+    }
+
+    public Constants.CarEngineStatus getCarEngineStatus() {
+        return carEngineStatus;
+    }
+
+    public void setCarEngineStatus(Constants.CarEngineStatus carEngineStatus) {
+        this.carEngineStatus = carEngineStatus;
+    }
+
+    public Constants.TransmissionSystemHealth getTransmissionSystemHealth() {
+        return transmissionSystemHealth;
+    }
+
+    public void setTransmissionSystemHealth(Constants.TransmissionSystemHealth transmissionSystemHealth) {
+        this.transmissionSystemHealth = transmissionSystemHealth;
+    }
+
+    public Constants.Fuel getFuel() {
+        return fuel;
+    }
+
+    public void setFuel(Constants.Fuel fuel) {
+        this.fuel = fuel;
     }
 }

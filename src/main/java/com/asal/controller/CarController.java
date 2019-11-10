@@ -1,6 +1,7 @@
 package com.asal.controller;
 
 import com.asal.DTO.CarDetails;
+import com.asal.DTO.CarStatus;
 import com.asal.service.base.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -59,6 +60,11 @@ public class CarController {
         } catch (Exception e) {
             return -1;
         }
+    }
+
+    @PostMapping(value = "/updateCarStatus")
+    public int updateCarStatus(@RequestParam("carId") Integer carId, @RequestBody CarStatus carStatus) {
+        return carService.updateCarStatus(carId, carStatus);
     }
 
 }

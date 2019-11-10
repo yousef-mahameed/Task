@@ -2,7 +2,7 @@ package com.asal.DTO;
 
 import java.time.ZonedDateTime;
 
-public class CarDetails extends BasicItem{
+public class CarDetails extends CarStatus{
 
     private String plateLicense;
     private int manufacturerId;
@@ -12,13 +12,17 @@ public class CarDetails extends BasicItem{
     private double rating;
     private boolean isSelected;
     private ZonedDateTime createdOn;
+    String engineStatus;
+    String transmissionSystemHealth;
+    String fuel;
 
     public CarDetails() {
     }
 
     public CarDetails(int carId, String plateLicense, int manufacturerId, int seatCount,
                       boolean convertible, String engineType, double rating,
-                      boolean isSelected, ZonedDateTime createdOn) {
+                      boolean isSelected, ZonedDateTime createdOn,String engineStatus,
+                              String transmissionSystemHealth, String fuel) {
         this.setId(carId);
         this.plateLicense = plateLicense;
         this.manufacturerId = manufacturerId;

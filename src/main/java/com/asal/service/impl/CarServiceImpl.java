@@ -3,6 +3,8 @@ package com.asal.service.impl;
 import com.asal.DAO.CarDAO;
 import com.asal.DTO.BasicItem;
 import com.asal.DTO.CarDetails;
+import com.asal.DTO.CarStatus;
+import com.asal.constants.Constants;
 import com.asal.model.Car;
 import com.asal.model.Manufacturer;
 import com.asal.service.base.CarService;
@@ -30,7 +32,13 @@ public class CarServiceImpl implements CarService {
             if (car != null) {
                 car.setIsSelected(false);
                 car.setCreatedOn(ZonedDateTime.now());
-                carDAO.save(car);
+                car = carDAO.save(car);
+                CarStatus carStatus = new CarStatus(
+                        Constants.CarEngineStatus.FUNCTIONING.name(),
+                        Constants.TransmissionSystemHealth.EXCELLENT.name(),
+                        Constants.Fuel.FULL.name()
+                );
+                this.updateCarStatus(car.getId(), carStatus);
                 return 1;
             }
             return -1;
@@ -117,6 +125,23 @@ public class CarServiceImpl implements CarService {
         return setCarSelected(carId, false);
     }
 
+    @Override
+    public int updateCarStatus(Integer carId, CarStatus carStatus) {
+        try {
+            Car car = carDAO.findCarById(carId);
+            if (car != null) {
+                car.setCarEngineStatus(Constants.CarEngineStatus.valueOf(carStatus.getEngineStatus()));
+                car.setTransmissionSystemHealth(Constants.TransmissionSystemHealth.valueOf(carStatus.getTransmissionSystemHealth()));
+                car.setFuel(Constants.Fuel.valueOf(carStatus.getFuel()));
+                carDAO.save(car);
+                return 1;
+            }
+            return -1;
+        }catch (Exception e) {
+            return -1;
+        }
+    }
+
 
     private int setCarSelected(int carId, boolean selected) {
         try {
@@ -141,14 +166,22 @@ public class CarServiceImpl implements CarService {
     private Car convertToEntity(CarDetails carDetails) {
         if (carDetails != null) {
             Car car = new Car();
-            car.setId(carDetails.getId());
-            car.setPlateLicense(carDetails.getPlateLicense());
+            if (carDetails.getId()!= null) {
+                car.setId(carDetails.getId());
+            }
+            if (carDetails.getPlateLicense()!= null) {
+                car.setPlateLicense(carDetails.getPlateLicense());
+            }
             car.setSeatCount(carDetails.getSeatCount());
             car.setIsConvertible(carDetails.isConvertible());
-            car.setEngineType(carDetails.getEngineType());
+            if (carDetails.getEngineType()!= null) {
+                car.setEngineType(carDetails.getEngineType());
+            }
             car.setRating(carDetails.getRating());
             car.setIsSelected(carDetails.isSelected());
-            car.setCreatedOn(carDetails.getCreatedOn());
+            if (carDetails.getCreatedOn()!= null) {
+                car.setCreatedOn(carDetails.getCreatedOn());
+            }
             Manufacturer manufacturer = manufacturerService.findManufacturerById(carDetails.getManufacturerId());
             if (manufacturer == null) {
                 return null;
@@ -162,15 +195,43 @@ public class CarServiceImpl implements CarService {
     private CarDetails convertToDTO (Car car) {
         if (car != null) {
             CarDetails carDetails = new CarDetails();
-            carDetails.setId(car.getId());
-            carDetails.setPlateLicense(car.getPlateLicense());
-            carDetails.setSeatCount(car.getSeatCount());
-            carDetails.setConvertible(car.getIsConvertible());
-            carDetails.setEngineType(car.getEngineType());
-            carDetails.setRating(car.getRating());
-            carDetails.setManufacturerId(car.getManufacturer().getId());
-            carDetails.setSelected(car.getIsSelected());
-            carDetails.setCreatedOn(car.getCreatedOn());
+            if (car.getId() != null) {
+                carDetails.setId(car.getId());
+            }
+            if (car.getPlateLicense() != null) {
+                carDetails.setPlateLicense(car.getPlateLicense());
+            }
+            if (car.getSeatCount() != null) {
+                carDetails.setSeatCount(car.getSeatCount());
+            }
+            if (car.getIsConvertible() != null) {
+                carDetails.setConvertible(car.getIsConvertible());
+            }
+
+            if (car.getEngineType() != null) {
+                carDetails.setEngineType(car.getEngineType());
+            }
+            if (car.getRating() != null) {
+                carDetails.setRating(car.getRating());
+            }
+            if (car.getManufacturer().getId() != null) {
+                carDetails.setManufacturerId(car.getManufacturer().getId());
+            }
+            if (car.getIsSelected() != null) {
+                carDetails.setSelected(car.getIsSelected());
+            }
+            if (car.getCreatedOn() != null) {
+                carDetails.setCreatedOn(car.getCreatedOn());
+            }
+            if (car.getCarEngineStatus() != null) {
+                carDetails.setEngineStatus(car.getCarEngineStatus().name());
+            }
+            if (car.getTransmissionSystemHealth() != null) {
+                carDetails.setTransmissionSystemHealth(car.getTransmissionSystemHealth().name());
+            }
+            if (car.getFuel() != null) {
+                carDetails.setFuel(car.getFuel().name());
+            }
             return carDetails;
         }
         return null;
